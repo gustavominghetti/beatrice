@@ -33,3 +33,5 @@ A estrutura do código é organizada da seguinte forma:
 1. Instale as dependências: `npm install`
 2. Configure as variáveis de ambiente no arquivo `.env` (necessário `FIREBASE_KEY_PATH`).
 3. Inicie o servidor: `npm start` (ou `node src/index.js`)
+
+![BEATRICE](https://media.tenor.com/I-2_kJDfAIUAAAAM/re-zero-beatrice.gif)
