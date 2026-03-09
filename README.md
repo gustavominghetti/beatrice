@@ -1,1 +1,35 @@
-📖 Beatrice: Api em Graphql com o intuito de estudar e participar do projeto de TG do Ensino Superior
+# 📖 Beatrice
+
+Beatrice é uma API GraphQL desenvolvida com o intuito de estudar e participar de um projeto de Trabalho de Graduação (TG) do Ensino Superior. O foco principal é o monitoramento de ambientes (recintos) através de dados coletados por sensores.
+
+## 🚀 Funcionamento do Projeto
+
+O projeto funciona como uma ponte entre os sensores (ou dispositivos que coletam dados) e uma interface de usuário.
+
+### 🛠️ Tecnologias Utilizadas
+
+- **Node.js & Express:** Base para o servidor web.
+- **Apollo Server:** Implementação do servidor GraphQL para gerenciar consultas e mutações.
+- **Firebase Firestore:** Banco de dados NoSQL utilizado para persistência dos dados em tempo real.
+- **GraphQL Tools:** Utilizado para modularizar e carregar esquemas e resolvers de forma eficiente.
+
+### 🏗️ Arquitetura
+
+A estrutura do código é organizada da seguinte forma:
+
+- **`src/schemas/`**: Contém as definições de tipos do GraphQL (`.graphql`). Define quais dados podem ser consultados (Query) ou alterados (Mutation).
+- **`src/resolvers/`**: Contém a lógica de implementação para cada campo definido no schema. É aqui que as chamadas ao banco de dados Firestore são realizadas.
+- **`src/config/`**: Configurações de serviços externos, como a conexão com o Firebase.
+- **`src/index.js` & `src/app.js`**: Ponto de entrada da aplicação e configuração do servidor Apollo.
+
+### 📊 Fluxo de Dados
+
+1. **Mutations**: Permitem o registro de novos dados de sensores (ex: `createVariant`), que incluem temperatura, umidade, ruído e luminosidade.
+2. **Queries**: Permitem a consulta dos últimos dados registrados para um determinado recinto (ex: `latestVariants`).
+3. **Firestore**: Todos os dados são armazenados em coleções no Firebase, facilitando o acesso escalável e em tempo real.
+
+## 🏁 Como Iniciar
+
+1. Instale as dependências: `npm install`
+2. Configure as variáveis de ambiente no arquivo `.env` (necessário `FIREBASE_KEY_PATH`).
+3. Inicie o servidor: `npm start` (ou `node src/index.js`)
