@@ -1,6 +1,7 @@
 const admin = require('firebase-admin');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+const fs = require('fs');
+require('dotenv').config();
 
 const keyPath = process.env.FIREBASE_KEY_PATH;
 
@@ -8,7 +9,13 @@ if (!keyPath) {
   throw new Error("A variável FIREBASE_KEY_PATH não foi encontrada no arquivo .env");
 }
 
-const serviceAccount = require(path.resolve(keyPath));
+const resolvedPath = path.resolve(keyPath);
+
+if (!fs.existsSync(resolvedPath)) {
+  throw new Error(`Arquivo de chave do Firebase não encontrado no caminho: ${resolvedPath}`);
+}
+
+const serviceAccount = require(resolvedPath);
 
 if (!admin.apps.length) {
   admin.initializeApp({
