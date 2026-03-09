@@ -1,0 +1,9 @@
+# Ignorar dependências
+node_modules/
+
+# Ignorar variáveis de ambiente
+.env
+
+# Ignorar o arquivo de credenciais do Firebase (JSON)
+*.json
+!package.json

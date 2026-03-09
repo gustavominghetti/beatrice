@@ -1,0 +1,30 @@
+type Variant {
+    id: ID!
+    enclosureId: ID!
+    temperature: Float
+    humidity: Float
+    noises: Float
+    luminosity: Float
+    timestamp: String!
+}
+
+input newVariantInput {
+    enclosureId: ID!
+    temperature: Float!
+    humidity: Float!
+    noises: Float!
+    luminosity: Float!
+    timestamp: String!
+}
+
+type Query {
+    latestVariants(enclosureId: ID!, limit: Int): [Variant]
+}
+
+type Mutation {
+    createVariant(input: newVariantInput!): Variant
+}
+
+type Subscription {
+    variantAdded(enclosureId: ID!): Variant
+}
