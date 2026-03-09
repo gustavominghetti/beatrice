@@ -3,16 +3,17 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
-const keyPath = process.env.FIREBASE_KEY_PATH;
+const keyPathRaw = process.env.FIREBASE_KEY_PATH;
 
-if (!keyPath) {
+if (!keyPathRaw) {
   throw new Error("A variável FIREBASE_KEY_PATH não foi encontrada no arquivo .env");
 }
 
-const resolvedPath = path.resolve(keyPath);
+const keyPath = keyPathRaw.trim();
+const resolvedPath = path.resolve(process.cwd(), keyPath);
 
 if (!fs.existsSync(resolvedPath)) {
-  throw new Error(`Arquivo de chave do Firebase não encontrado no caminho: ${resolvedPath}`);
+  throw new Error(`Arquivo de chave do Firebase não encontrado no caminho: [${resolvedPath}]`);
 }
 
 const serviceAccount = require(resolvedPath);
