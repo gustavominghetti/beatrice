@@ -1,0 +1,27 @@
+input AlertInput {
+  enclosureId: ID!
+  enclosureName: String
+  variable: String!
+  severity: String!
+}
+
+type Alert {
+  id: ID!
+  enclosureId: ID!
+  enclosureName: String
+  variable: String
+  severity: String
+  timestamp: String
+  resolved: Boolean
+}
+
+type Query {
+  alerts(enclosureId: ID): [Alert]
+  activeAlerts: [Alert]
+}
+
+type Mutation {
+  resolveAlert(alertId: ID!): Alert
+  createAlert(input: AlertInput!): Alert
+  seedAlerts: [Alert]
+}
