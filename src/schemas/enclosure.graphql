@@ -1,0 +1,47 @@
+type Actuator {
+  fan: Boolean
+  nebulizer: Boolean
+  heater: Boolean
+  lamp: Boolean
+}
+
+type Limits {
+  tempMin: Float
+  tempMax: Float
+  humidityMin: Float
+  humidityMax: Float
+}
+
+type Variant {
+  temp: Float
+  humidity: Float
+  luminosity: Float
+  noise: Float
+  timestamp: String
+}
+
+type Enclosure {
+  id: ID!
+  name: String!
+  speciesId: String
+  photoUrl: String
+  lastReadings: Variant
+  limits: Limits
+  actuators: Actuator
+  status: String
+}
+
+type ToggleActuatorResult {
+  success: Boolean!
+  message: String
+}
+
+type Query {
+  enclosures: [Enclosure]
+  enclosure(id: ID!): Enclosure
+}
+
+type Mutation {
+  toggleActuator(enclosureId: ID!, actuatorType: String!, state: Boolean!): ToggleActuatorResult
+  seedEnclosures: [Enclosure]
+}

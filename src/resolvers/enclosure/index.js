@@ -1,20 +1,7 @@
-const { ApolloServer, gql } = require('apollo-server');
+const enclosureQueries = require('./query');
+const enclosureMutations = require('./mutation');
 
-const typeVariants = gql`
-  type Variant {
-    variantId: ID
-    name: String
-
-    enclosureId: ID
-  }
-
-  type Enclosure {
-    enclosureId: ID
-    nome: String
-    descricao: String
-  }
-
-  type Query {
-    recintos: [Recinto]
-  }
-`;
+module.exports = {
+  Query: enclosureQueries,
+  Mutation: enclosureMutations
+};
