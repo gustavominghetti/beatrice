@@ -16,8 +16,8 @@ const enclosureQueries = {
 
       return snapshot.docs.map(doc => enclosureMapper(doc));
     } catch (error) {
-      console.error('Erro ao buscar recintos:', error);
-      throw new Error('Erro ao carregar recintos.');
+      console.error('Erro detalhado ao buscar recintos:', error);
+      throw new Error(`Erro ao carregar recintos: ${error.message}`);
     }
   },
 
@@ -30,8 +30,8 @@ const enclosureQueries = {
 
       return enclosureMapper(doc);
     } catch (error) {
-      console.error('Erro ao buscar recinto:', error);
-      throw new Error(error.message || 'Erro ao carregar recinto.');
+      console.error('Erro detalhado ao buscar recinto:', error);
+      throw new Error(`Erro ao carregar recinto: ${error.message}`);
     }
   }
 };
