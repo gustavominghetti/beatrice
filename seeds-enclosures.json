@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Leão",
+    "speciesId": "Panthera leo",
+    "photoUrl": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&q=80&w=400",
+    "status": "ok",
+    "limits": {
+      "tempMin": 20,
+      "tempMax": 35,
+      "humidityMin": 40,
+      "humidityMax": 60
+    }
+  },
+  {
+    "name": "Elefante Africano",
+    "speciesId": "Loxodonta africana",
+    "photoUrl": "https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&q=80&w=400",
+    "status": "ok",
+    "limits": {
+      "tempMin": 18,
+      "tempMax": 38,
+      "humidityMin": 30,
+      "humidityMax": 70
+    }
+  },
+  {
+    "name": "Pinguim Imperador",
+    "speciesId": "Aptenodytes forsteri",
+    "photoUrl": "https://images.unsplash.com/photo-1598439210625-5067c578f3f6?auto=format&fit=crop&q=80&w=400",
+    "status": "warning",
+    "limits": {
+      "tempMin": -10,
+      "tempMax": 5,
+      "humidityMin": 60,
+      "humidityMax": 90
+    }
+  },
+  {
+    "name": "Gorila",
+    "speciesId": "Gorilla gorilla",
+    "photoUrl": "https://images.unsplash.com/photo-1540324155974-7523202daa3f?auto=format&fit=crop&q=80&w=400",
+    "status": "ok",
+    "limits": {
+      "tempMin": 15,
+      "tempMax": 28,
+      "humidityMin": 70,
+      "humidityMax": 95
+    }
+  },
+  {
+    "name": "Tigre de Bengala",
+    "speciesId": "Panthera tigris tigris",
+    "photoUrl": "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?auto=format&fit=crop&q=80&w=400",
+    "status": "critical",
+    "limits": {
+      "tempMin": 10,
+      "tempMax": 32,
+      "humidityMin": 50,
+      "humidityMax": 80
+    }
+  }
+]

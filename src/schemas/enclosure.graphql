@@ -12,13 +12,6 @@ type Limits {
   humidityMax: Float
 }
 
-type Variant {
-  temp: Float
-  humidity: Float
-  luminosity: Float
-  noise: Float
-  timestamp: String
-}
 
 type Enclosure {
   id: ID!

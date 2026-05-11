@@ -1,24 +1,44 @@
 type Variant {
-    id: ID!
-    enclosureId: ID!
-    temperature: Float
+    id: ID
+    enclosureId: ID
+    temp: Float
     humidity: Float
-    noises: Float
+    noise: Float
     luminosity: Float
-    timestamp: String!
+    timestamp: String
 }
 
 input newVariantInput {
     enclosureId: ID!
-    temperature: Float!
+    temp: Float!
     humidity: Float!
-    noises: Float!
+    noise: Float!
     luminosity: Float!
-    timestamp: String!
+    timestamp: String
+}
+
+type MetricStats {
+    min: Float
+    max: Float
+    avg: Float
+}
+
+type DashboardStats {
+    temp: MetricStats
+    humidity: MetricStats
+    noise: MetricStats
+    luminosity: MetricStats
+}
+
+type EnclosureDashboard {
+    enclosureId: ID!
+    history: [Variant]
+    stats: DashboardStats
 }
 
 type Query {
     latestVariants(enclosureId: ID!, limit: Int): [Variant]
+    enclosureDashboard(enclosureId: ID!): EnclosureDashboard
 }
 
 type Mutation {

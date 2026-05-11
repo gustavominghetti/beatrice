@@ -1,11 +1,11 @@
 const variantMapper = (doc) => {
-  const data = doc.data();
+  const data = typeof doc.data === 'function' ? doc.data() : doc;
   return {
-    id: doc.id,
+    id: doc.id || null,
     enclosureId: data.enclosureId,
-    temperature: data.temperature,
+    temp: data.temp || data.temperature,
     humidity: data.humidity,
-    noises: data.noises,
+    noise: data.noise || data.noises,
     luminosity: data.luminosity,
     timestamp: data.timestamp
   };
