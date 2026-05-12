@@ -13,6 +13,8 @@ input CreateCollaboratorInput {
   name: String
   role: String
   assignedEnclosures: [String]
+  password: String
+  badgeId: String
 }
 
 input UpdateCollaboratorInput {

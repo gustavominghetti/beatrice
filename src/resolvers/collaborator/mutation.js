@@ -42,8 +42,9 @@ const collaboratorMutations = {
       const collabDoc = snapshot.docs[0];
       const collabData = collabDoc.data();
 
-      // Verificação simples para o desafio, em real usaria bcrypt.compare
-      if (collabData.password !== password) {
+      // Verificação segura usando bcrypt
+      const isPasswordValid = await bcrypt.compare(password, collabData.password);
+      if (!isPasswordValid) {
         throw new Error('Credenciais inválidas.');
       }
 
@@ -89,8 +90,11 @@ const collaboratorMutations = {
 
   createCollaborator: async (_, { input }) => {
     try {
+      const hashedPassword = input.password ? await bcrypt.hash(input.password, 10) : null;
+
       const newCollaborator = {
         ...input,
+        password: hashedPassword,
         assignedEnclosures: input.assignedEnclosures || [],
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
@@ -198,8 +202,15 @@ const collaboratorMutations = {
       const createdCollaborators = [];
 
       for (const collaborator of seedCollaboratorsData) {
-        await db.collection('collaborators').doc(collaborator.id).set(collaborator);
-        createdCollaborators.push(collaborator);
+        const hashedPassword = await bcrypt.hash(collaborator.password, 10);
+        const collaboratorToSave = {
+          ...collaborator,
+          password: hashedPassword,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+        await db.collection('collaborators').doc(collaborator.id).set(collaboratorToSave);
+        createdCollaborators.push(collaboratorToSave);
       }
 
       console.log('✅ Seed de colaboradores criado com sucesso!');
